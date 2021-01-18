@@ -10,9 +10,7 @@ from PIL import Image
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-# app.secret_key = "secret key"
 
-# from Helpers import *
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 

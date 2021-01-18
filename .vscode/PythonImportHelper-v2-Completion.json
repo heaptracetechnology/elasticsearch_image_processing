@@ -209,7 +209,7 @@
         "kind": 5,
         "importPath": "flask_api",
         "description": "flask_api",
-        "peekOfCode": "app = Flask(__name__)\n# app.secret_key = \"secret key\"\n# from Helpers import *\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])\ndef allowed_file(filename):\n    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef upload_form():\n    return render_template('upload.html')\n@app.route('/', methods=['POST'])",
+        "peekOfCode": "app = Flask(__name__)\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])\ndef allowed_file(filename):\n    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef upload_form():\n    return render_template('upload.html')\n@app.route('/', methods=['POST'])\ndef upload_image():\n    def resize(image, width=None, height=None, inter=cv2.INTER_AREA):",
         "detail": "flask_api",
         "documentation": {}
     },
