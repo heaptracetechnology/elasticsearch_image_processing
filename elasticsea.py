@@ -1,0 +1,153 @@
+# # steps to install elasticsearch im ubuntu and python
+# '''
+# sudo apt update
+# sudo apt-get install apt-transport-http
+# wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+# sudo add-apt-repository "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
+# sudo apt update
+# sudo apt install elasticsearch
+# To start Elasticsearch process
+
+# sudo /etc/init.d/elasticsearch start
+# sudo /etc/init.d/elasticsearch status
+# Test setup
+# curl -X GET "http://localhost:9200/?pretty"
+# '''
+# '''
+# # chapter-2 -- insert and get query
+from elasticsearch import Elasticsearch
+es = Elasticsearch(HOST='http://localhost', port=9200)  # for local instance
+es = Elasticsearch()
+
+# es.indices.create(index='data', ignore=400)  # creating first index
+
+# es.indices.exists(index='first')  # returns true if index exists
+
+es.indices.delete(index='data')  # deletes the index
+
+
+# adding data to elasticsearch
+
+doc1 = {"city": "new delhi", "country": "india"}
+doc2 = {"city": "paris", "country": "england"}
+doc3 = {"city": "california", "country": "usa"}
+
+# >> > es.index(index="cities", doc_type='places', id=1, body=doc1)
+# >> > es.index(index="cities", doc_type='places', id=2, body=doc2)
+# >> > es.index(index="cities", doc_type='places', id=3, body=doc3)
+
+
+# finding result related to particular index
+
+# >>> res=es.get(index='cities',doc_type="places",id=3,body=doc3)
+# >>>res
+# >>> res['_source'] -->  {'city': 'california', 'country': 'usa'}
+
+
+# chapter-3 search queries for matching documents:
+# '''
+# '''
+# from elasticsearch import Elasticsearch
+# es = Elasticsearch("http://localhost:9200")
+
+# doc1 = {"sentence" : "Today is a sunny day."}
+# doc2 = {"sentence" : "Today is a bright-sunny day"}
+
+# es.index(index="english", doc_type="sentences", id=1, body=doc1)
+# # {'_index': 'english', '_type': 'sentences', '_id': '1', '_version': 5, 'result': 'updated', '_shards': {'total': 2, 'successful': 1, 'failed': 0}, '_seq_no': 7, '_primary_term': 1}
+
+# es.index(index="english", doc_type="sentences", id=2, body=doc2)
+# # {'_index': 'english', '_type': 'sentences', '_id': '2', '_version': 4, 'result': 'updated', '_shards': {'total': 2, 'successful': 1, 'failed': 0}, '_seq_no': 8, '_primary_term': 1}
+
+
+# res = es.search(index="english", body={"from":0,"size":0,"query":{"match":{"sentence":"SUNNY"}}})
+# # form--> offset from where we need to start search for
+# # size--> total no  of matched documents it has to be fetched
+# # query--> what type of query to be executed and of what match on sentence key and match for sunny term
+# print(res)
+
+# {'took': 3, 'timed_out': False, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}, 'hits': {'total': {'value': 2, 'relation': 'eq'}, 'max_score': None, 'hits': []}}
+
+# # value 2 --> it means that match query is case sentence
+
+# # match_phrase is looks for the order
+
+# res = es.search(index="english", body={"from":0,"size":0,"query":{"match_phrase":{"sentence":"bright SUNNY"}}})
+# print(res)
+# # {'took': 2, 'timed_out': False, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}, 'hits': {'total': {'value': 1, 'relation': 'eq'}, 'max_score': None, 'hits': []}}
+
+
+# # term is matched for exactly matching:
+# res = es.search(index="english", body={"from":0,"size":0,"query":{"term":{"sentence":"bright SUNNY"}}})
+# print(res)
+# # {'took': 2, 'timed_out': False, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}, 'hits': {'total': {'value': 0, 'relation': 'eq'}, 'max_score': None, 'hits': []}}
+# '''
+
+
+# # chapter =4 combining queries in elasticsearch
+
+# from elasticsearch import Elasticsearch
+# es = Elasticsearch("http://localhost:9200")
+
+# doc1 = {"sentence" : "Today is a sunny day."}
+# doc2 = {"sentence" : "Today is a bright-sunny day"}
+
+# # must -> matching documents must have that clause
+# # mustnot -> matching document must not have that clause
+# # should -> when shoild is with must ..then it is not necessary to match the should clause
+# #             if none of the must clause is present..then at least one should should be matched
+
+
+# res = es.search(index="english", body={ "from": 0, "size": 1, "query": { "bool": { "must_not": { "match": { "sentence": "bright" } }, "should": { "match": { "sentence": "sunny" } } } } })
+# print(res)
+
+# # {'took': 34, 'timed_out': False, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}, 'hits': {'total': {'value': 1, 'relation': 'eq'}, 'max_score': 0.18936403, 'hits': [{'_index': 'english', '_type': 'sentences', '_id': '1', '_score': 0.18936403, '_source': {'sentence': 'Today is a sunny day.'}}]}}
+
+
+# sudo apt-get install update
+# install java
+# sudo apt-get update
+# clear
+# sudo apt-get -y install ngnix
+# sudo systemctl enable nginx
+# sudo systemctl status nginx
+# history
+# sudo systemctl status elasticsearch
+# sudo systemctl enable elasticsearch
+# sudo systemctl status elasticsearch
+# clear
+# # installing kibana
+# sudo apt-get update && sudo apt-get install kibana
+
+# # installing logstash
+# sudo apt-get install apt-transport-https
+# sudo apt-get update && sudo apt-get install logstash
+# curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.10.1-amd64.deb
+# sudo dpkg -i filebeat-7.10.1-amd64.deb
+# history
+
+# make change in the following file
+# sudo nano /etc/elasticsearch/elasticsearch.yml
+
+# sudo nano /etc/kibana/kibana.yml
+# sudo systemctl start kibana
+# sudo systemctl status kibana
+# clear
+# make kibana work with nginx we need to install apache2utils
+# sudo apt-get install -y apache2-utils
+
+# kibana file ko password set karta hai
+# sudo htpassword -c /etc/ngnix/htpasswd.users
+
+# #password dekhne ke liy
+# sudo htpasswd -c /etc/nginx/htpasswd.users kibadmin
+
+# #ye file me ja ke kibana ka settings with nginx
+# sudo nano  /etc/ngnix/htpasswd.users
+
+# # sample apache logs
+# sudo wget https://logs.io/sample-data
+
+# sudo cp sample-data apache.log
+
+# create a pipeline in /etc/logstash/conf.d
