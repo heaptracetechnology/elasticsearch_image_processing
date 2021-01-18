@@ -22,6 +22,7 @@ installation:
 
 
 Configuration and Execution:
+
     1.start the elasticsearch service by following command:
         systemctl start elasticsearch
     
