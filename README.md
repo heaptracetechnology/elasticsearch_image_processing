@@ -24,9 +24,12 @@ installation:
 Configuration and Execution:
     1.start the elasticsearch service by following command:
         systemctl start elasticsearch
+    
     2.Run the flask code.
         python3 flask_api.py
+    
     3.Hit the endpoint    http://localhost:5000/
+
     4.upload the images and check the visibility score.
 
     5.images are also stored in elasticsearch. to check this,hit the following endpoint:
