@@ -36,4 +36,14 @@ Configuration and Execution:
     5.images are also stored in elasticsearch. to check this,hit the following endpoint:
         http://localhost:9200/data/_search?size=1000&from=0
 
+   
+    Execution from the Docker file:
+
+    1.pull docker image from following link.
+        <haven't uploaded yet>
+
+
+    2.execute the following command
+        docker run --network=host opencv-flask
+
     

@@ -137,7 +137,7 @@
         "kind": 5,
         "importPath": "elasticsea",
         "description": "elasticsea",
-        "peekOfCode": "es = Elasticsearch(HOST='http://localhost', port=9200)  # for local instance\nes = Elasticsearch()\n# es.indices.create(index='data', ignore=400)  # creating first index\n# es.indices.exists(index='first')  # returns true if index exists\nes.indices.delete(index='data')  # deletes the index\n# adding data to elasticsearch\ndoc1 = {\"city\": \"new delhi\", \"country\": \"india\"}\ndoc2 = {\"city\": \"paris\", \"country\": \"england\"}\ndoc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)",
+        "peekOfCode": "es = Elasticsearch(HOST='http://localhost', port=9200)  # for local instance\nes = Elasticsearch()\n# es.indices.create(index='data', ignore=400)  # creating first index\n# es.indices.exists(index='first')  # returns true if index exists\nes.indices.delete(index='data')  # deletes the index\n# adding data to elasticsearch\n# doc1 = {\"city\": \"new delhi\", \"country\": \"india\"}\n# doc2 = {\"city\": \"paris\", \"country\": \"england\"}\n# doc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)",
         "detail": "elasticsea",
         "documentation": {}
     },
@@ -146,34 +146,7 @@
         "kind": 5,
         "importPath": "elasticsea",
         "description": "elasticsea",
-        "peekOfCode": "es = Elasticsearch()\n# es.indices.create(index='data', ignore=400)  # creating first index\n# es.indices.exists(index='first')  # returns true if index exists\nes.indices.delete(index='data')  # deletes the index\n# adding data to elasticsearch\ndoc1 = {\"city\": \"new delhi\", \"country\": \"india\"}\ndoc2 = {\"city\": \"paris\", \"country\": \"england\"}\ndoc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)\n# >> > es.index(index=\"cities\", doc_type='places', id=2, body=doc2)",
-        "detail": "elasticsea",
-        "documentation": {}
-    },
-    {
-        "label": "doc1",
-        "kind": 5,
-        "importPath": "elasticsea",
-        "description": "elasticsea",
-        "peekOfCode": "doc1 = {\"city\": \"new delhi\", \"country\": \"india\"}\ndoc2 = {\"city\": \"paris\", \"country\": \"england\"}\ndoc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)\n# >> > es.index(index=\"cities\", doc_type='places', id=2, body=doc2)\n# >> > es.index(index=\"cities\", doc_type='places', id=3, body=doc3)\n# finding result related to particular index\n# >>> res=es.get(index='cities',doc_type=\"places\",id=3,body=doc3)\n# >>>res\n# >>> res['_source'] -->  {'city': 'california', 'country': 'usa'}",
-        "detail": "elasticsea",
-        "documentation": {}
-    },
-    {
-        "label": "doc2",
-        "kind": 5,
-        "importPath": "elasticsea",
-        "description": "elasticsea",
-        "peekOfCode": "doc2 = {\"city\": \"paris\", \"country\": \"england\"}\ndoc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)\n# >> > es.index(index=\"cities\", doc_type='places', id=2, body=doc2)\n# >> > es.index(index=\"cities\", doc_type='places', id=3, body=doc3)\n# finding result related to particular index\n# >>> res=es.get(index='cities',doc_type=\"places\",id=3,body=doc3)\n# >>>res\n# >>> res['_source'] -->  {'city': 'california', 'country': 'usa'}\n# chapter-3 search queries for matching documents:",
-        "detail": "elasticsea",
-        "documentation": {}
-    },
-    {
-        "label": "doc3",
-        "kind": 5,
-        "importPath": "elasticsea",
-        "description": "elasticsea",
-        "peekOfCode": "doc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)\n# >> > es.index(index=\"cities\", doc_type='places', id=2, body=doc2)\n# >> > es.index(index=\"cities\", doc_type='places', id=3, body=doc3)\n# finding result related to particular index\n# >>> res=es.get(index='cities',doc_type=\"places\",id=3,body=doc3)\n# >>>res\n# >>> res['_source'] -->  {'city': 'california', 'country': 'usa'}\n# chapter-3 search queries for matching documents:\n# '''",
+        "peekOfCode": "es = Elasticsearch()\n# es.indices.create(index='data', ignore=400)  # creating first index\n# es.indices.exists(index='first')  # returns true if index exists\nes.indices.delete(index='data')  # deletes the index\n# adding data to elasticsearch\n# doc1 = {\"city\": \"new delhi\", \"country\": \"india\"}\n# doc2 = {\"city\": \"paris\", \"country\": \"england\"}\n# doc3 = {\"city\": \"california\", \"country\": \"usa\"}\n# >> > es.index(index=\"cities\", doc_type='places', id=1, body=doc1)\n# >> > es.index(index=\"cities\", doc_type='places', id=2, body=doc2)",
         "detail": "elasticsea",
         "documentation": {}
     },

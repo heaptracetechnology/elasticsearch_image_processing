@@ -28,9 +28,9 @@ es.indices.delete(index='data')  # deletes the index
 
 # adding data to elasticsearch
 
-doc1 = {"city": "new delhi", "country": "india"}
-doc2 = {"city": "paris", "country": "england"}
-doc3 = {"city": "california", "country": "usa"}
+# doc1 = {"city": "new delhi", "country": "india"}
+# doc2 = {"city": "paris", "country": "england"}
+# doc3 = {"city": "california", "country": "usa"}
 
 # >> > es.index(index="cities", doc_type='places', id=1, body=doc1)
 # >> > es.index(index="cities", doc_type='places', id=2, body=doc2)
