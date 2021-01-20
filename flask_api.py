@@ -9,6 +9,8 @@ from flask import Flask, flash, redirect, render_template, request
 from PIL import Image
 from werkzeug.utils import secure_filename
 
+import os
+
 app = Flask(__name__)
 
 
@@ -97,7 +99,8 @@ def upload_image():
     # storing image to the elasticsearch
 
     from elasticsearch import Elasticsearch
-    es = Elasticsearch()
+    es = Elasticsearch(hosts=os.environ.get('host'),
+                       port=os.environ.get('port'))
 
     es.indices.create(index='data', ignore=400)  # creating first index
     ls1 = []
