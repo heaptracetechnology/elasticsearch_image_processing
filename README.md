@@ -40,7 +40,7 @@ Configuration and Execution:
     Execution from the Docker file:
 
     1.pull docker image from following link.
-        <haven't uploaded yet>
+        docker pull swapnil3024/flask-opencv:latest
 
 
     2.execute the following command
