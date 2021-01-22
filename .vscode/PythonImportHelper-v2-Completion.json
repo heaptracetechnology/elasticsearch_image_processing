@@ -109,15 +109,6 @@
         "documentation": {}
     },
     {
-        "label": "dt",
-        "kind": 5,
-        "importPath": "dummy",
-        "description": "dummy",
-        "peekOfCode": "dt = {'77': \"< FileStorage: 'download (4).jpeg' ('image/jpeg')} >\",\n      '173': \"< FileStorage: 'download (5).jpeg' ('image/jpeg') > \",\n      '3': \"< FileStorage: 'images.jpeg' ('image/jpeg') > \"}\nfor i in dt:\n    print(i)",
-        "detail": "dummy",
-        "documentation": {}
-    },
-    {
         "label": "allowed_file",
         "kind": 2,
         "importPath": "flask_api",

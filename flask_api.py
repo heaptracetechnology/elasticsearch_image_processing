@@ -2,18 +2,13 @@
 import base64
 import io
 from os.path import abspath
-
 import cv2
 import numpy as np
 from flask import Flask, flash, redirect, render_template, request
 from PIL import Image
 from werkzeug.utils import secure_filename
-
 import os
-
 app = Flask(__name__)
-
-
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 
@@ -99,8 +94,7 @@ def upload_image():
     # storing image to the elasticsearch
 
     from elasticsearch import Elasticsearch
-    es = Elasticsearch(hosts=os.environ.get('host'),
-                       port=os.environ.get('port'))
+    es = Elasticsearch()  #
 
     es.indices.create(index='data', ignore=400)  # creating first index
     ls1 = []
