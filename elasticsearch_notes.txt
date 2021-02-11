@@ -17,6 +17,9 @@
 # # chapter-2 -- insert and get query
 from elasticsearch import Elasticsearch
 es = Elasticsearch(HOST='http://localhost', port=9200)  # for local instance
+es = Elasticsearch(['http://localhost:8080'], http_auth=('user', 'pass')) #for auth instances
+
+
 es = Elasticsearch()
 
 # es.indices.create(index='data', ignore=400)  # creating first index
