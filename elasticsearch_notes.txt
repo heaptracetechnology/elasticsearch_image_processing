@@ -151,3 +151,10 @@ es.indices.delete(index='data')  # deletes the index
 # sudo cp sample-data apache.log
 
 # create a pipeline in /etc/logstash/conf.d
+
+#after insertion of data in elasticsearch if we want to retrive it
+# http://localhost:9200/data/_search?size=1000
+
+# to count the data in elasticsearch
+# http://localhost:9200/data/_count?
+
